@@ -16,7 +16,7 @@ h2{{font-size:9pt;margin:4px 0 1px;color:#1b4f72;text-transform:uppercase}}
 table{{border-collapse:collapse;width:100%;font-size:9pt;margin:2px 0}}th,td{{border-bottom:.5px solid #999;padding:0 3px;text-align:right}}th{{border-bottom:1px solid #000;font-weight:bold;vertical-align:bottom}}td:first-child,th:first-child{{text-align:left}}
 img{{width:18cm;display:block}}.c{{font-size:9pt}}
 </style><body>
-<div class="id"><b>Turma:</b> 2ESR &nbsp;|&nbsp; <b>Integrantes (nome – RM):</b> Guilherme Augusto Ferreira Fernandes – RM 562107 · Bernardo Lozório Gomes Y Gomes – RM 564943 · Guilherme Damásio Roselli – RM 571922 · Caio Marques Lins – RM 559805</div>
+<div class="id"><b>Turma:</b> 2ESR &nbsp;|&nbsp; <b>Integrantes (nome – RM):</b> Guilherme Augusto Ferreira Fernandes – RM 562107 · Bernardo Lozório Gomes Y Gomes – RM 564943 · Guilherme Damásio Roselli – RM 571922 · Caio Marques Lins – RM 559805 · Murilo Gonzalez Bez Chleba – RM 566199</div>
 <h1>O custo invisível do café: estratégia de consumo consciente em cápsulas</h1>
 <div class="box"><b>Estratégia.</b> (1) Comprar <b>Aurora</b> como padrão: melhor escore ponderado em 3 de 4 esquemas de pesos e entre as 2 primeiras em 75% de 20 000 pesos aleatórios. (2) <b>Devolver 100% das cápsulas a um ponto de coleta</b>: sem coleta, 0 de 2 002 cápsulas foram recicladas; com coleta, 50,1% (de 3 118). (3) Trocar por <b>Bravura</b> se a prioridade for clima/reciclagem (vence no esquema ambiental, P=94%). (4) <b>Evitar Estação, Granito e Cerrado</b> (posições 6–8) e não aceitar “reciclável”, “compensado” ou “vegetal” como evidência.</div>
 <h2>Critério de “melhor” e método</h2>
