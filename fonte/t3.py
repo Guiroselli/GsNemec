@@ -1,7 +1,7 @@
 import pandas as pd, glob, numpy as np
 from scipy import stats
 from statsmodels.stats.multitest import multipletests
-df=pd.concat([pd.read_csv(f) for f in sorted(glob.glob('../dados/dados/*.csv'))],ignore_index=True)
+df=pd.concat([pd.read_csv(f) for f in sorted(glob.glob('../dados/*.csv'))],ignore_index=True)
 M=['Aurora','Bravura','Cerrado','Delta','Estacao','Flora','Granito','Horizonte']
 a=df[df.auditoria_fornecedor_realizada==1]
 def two(d,col,m1,m2):

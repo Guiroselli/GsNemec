@@ -1,6 +1,6 @@
 import pandas as pd, glob, numpy as np
 from scipy import stats
-D='../dados/dados'
+D='../dados'
 df=pd.concat([pd.read_csv(f) for f in sorted(glob.glob(D+'/*.csv'))],ignore_index=True)
 pd.set_option('display.width',250); pd.set_option('display.max_columns',50)
 print(df.groupby(['marca','destinacao_final']).co2e_fim_vida_g.agg(['mean','count']).round(1).unstack())

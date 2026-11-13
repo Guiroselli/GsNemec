@@ -2,7 +2,7 @@ import pandas as pd, glob, numpy as np, matplotlib
 matplotlib.use('Agg'); import matplotlib.pyplot as plt
 from statsmodels.stats.proportion import proportion_confint
 plt.rcParams.update({'font.size':9,'font.family':'DejaVu Sans','axes.titlesize':9,'axes.labelsize':9,'xtick.labelsize':9,'ytick.labelsize':9,'legend.fontsize':9,'axes.spines.top':False,'axes.spines.right':False})
-df=pd.concat([pd.read_csv(f) for f in sorted(glob.glob('../dados/dados/*.csv'))],ignore_index=True)
+df=pd.concat([pd.read_csv(f) for f in sorted(glob.glob('../dados/*.csv'))],ignore_index=True)
 for c in ['co2e_total_g','agua_total_l','desmatamento_atribuido_m2','indice_efluentes_toxicos']: df[c+'_pg']=df[c]/df.massa_cafe_g
 M=['Aurora','Bravura','Cerrado','Delta','Estacao','Flora','Granito','Horizonte']
 NM={'Estacao':'Estação'}

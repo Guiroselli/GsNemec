@@ -2,7 +2,7 @@ import pandas as pd, glob, numpy as np
 from scipy import stats
 from statsmodels.stats.proportion import proportion_confint
 from statsmodels.stats.multitest import multipletests
-D='../dados/dados'
+D='../dados'
 df=pd.concat([pd.read_csv(f) for f in sorted(glob.glob(D+'/*.csv'))],ignore_index=True)
 for c in ['co2e_total_g','agua_total_l','desmatamento_atribuido_m2','indice_efluentes_toxicos']:
     df[c+'_pg']=df[c]/df.massa_cafe_g
