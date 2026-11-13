@@ -1,0 +1,36 @@
+import pandas as pd
+I=pd.read_csv('ind.csv',index_col=0)
+sc={'Aurora':.36,'Bravura':.28,'Flora':.18,'Delta':.18,'Horizonte':.10,'Cerrado':-.14,'Granito':-.17,'Estacao':-.77}
+p1={'Aurora':64,'Bravura':23,'Flora':8,'Delta':4,'Horizonte':1,'Cerrado':0,'Granito':0,'Estacao':0}
+f=lambda x,d:f'{x:.{d}f}'.replace('.',',')
+rows=''
+for m in sorted(sc,key=lambda k:-sc[k]):
+    r=I.loc[m]; nm='Estação' if m=='Estacao' else m
+    rows+=f"<tr><td>{nm}</td><td>{f(r.co2,1)}</td><td>{f(r.agua,2)}</td><td>{f(r.desm,3)}</td><td>{f(r.efl,3)}</td><td>{f(r.rec*100,1)}</td><td>{f(r.ti*100,1)}{'*' if m=='Estacao' else ''}</td><td>{f(r.nc*100,1)}</td><td>{f(r.rem,3)}</td><td><b>{f(sc[m],2)}</b></td><td>{p1[m]}%</td></tr>"
+html=f"""<!doctype html><html lang="pt-BR"><meta charset="utf-8"><style>
+@page{{size:A4;margin:1.5cm}}*{{box-sizing:border-box}}body{{margin:0;font:9pt/1.15 'DejaVu Sans',Arial,sans-serif;color:#111;width:18cm}}
+h1{{font-size:12pt;margin:0 0 2px}}p,ul{{margin:0}}ul{{padding-left:13px}}li{{margin:0 0 1px}}
+.id{{border:1px solid #333;padding:2px 5px;margin-bottom:4px}}
+.box{{background:#e8f1f8;border-left:3px solid #1b4f72;padding:3px 6px;margin:3px 0}}
+h2{{font-size:9pt;margin:4px 0 1px;color:#1b4f72;text-transform:uppercase}}
+table{{border-collapse:collapse;width:100%;font-size:9pt;margin:2px 0}}th,td{{border-bottom:.5px solid #999;padding:0 3px;text-align:right}}th{{border-bottom:1px solid #000;font-weight:bold;vertical-align:bottom}}td:first-child,th:first-child{{text-align:left}}
+img{{width:18cm;display:block}}.c{{font-size:9pt}}
+</style><body>
+<div class="id"><b>Turma:</b> [PREENCHER] &nbsp;|&nbsp; <b>Integrantes (nome completo – RM):</b> [PREENCHER NOME 1 – RM] · [NOME 2 – RM] · [NOME 3 – RM]</div>
+<h1>O custo invisível do café: estratégia de consumo consciente em cápsulas</h1>
+<div class="box"><b>Estratégia.</b> (1) Comprar <b>Aurora</b> como padrão: melhor escore ponderado em 3 de 4 esquemas de pesos e entre as 2 primeiras em 75% de 20 000 pesos aleatórios. (2) <b>Devolver 100% das cápsulas a um ponto de coleta</b>: sem coleta, 0 de 2 002 cápsulas foram recicladas; com coleta, 50,1% (de 3 118). (3) Trocar por <b>Bravura</b> se a prioridade for clima/reciclagem (vence no esquema ambiental, P=94%). (4) <b>Evitar Estação, Granito e Cerrado</b> (posições 6–8) e não aceitar “reciclável”, “compensado” ou “vegetal” como evidência.</div>
+<h2>Critério de “melhor” e método</h2>
+<p>Melhor = menor dano ponderado <b>por g de café</b> (a massa de café difere entre marcas: 5,59–6,23 g, ANOVA p&lt;10⁻⁷⁰; CO₂e, água, desmatamento e efluentes divididos por <i>massa_cafe_g</i>). Escore = média ponderada dos z-scores das 8 médias de marca (sinal invertido quando menor é melhor). Pesos-base: trabalho infantil 20%, não conformidade trabalhista 10%, remuneração 10% (social 40%: dano humano é irreversível); CO₂e 15%; reciclagem <i>efetiva</i> 15%; desmatamento, efluentes e água 10% cada. Robustez: 4 esquemas de pesos, 20 000 pesos Dirichlet(1) e bootstrap de 1 000 reamostras de cápsulas (P(1º) abaixo). Testes: Welch e z de duas proporções, Holm (7 comparações vs. Aurora).</p>
+<table><tr><th>Marca (n=640)</th><th>CO₂e g/g café</th><th>Água L/g</th><th>Desm. m²/g</th><th>Efluentes índ./g</th><th>Recicl. efetiva %</th><th>Trab. infantil % (aud.)</th><th>Não conf. trab. % (aud.)</th><th>Remun. rel.</th><th>Escore base</th><th>P(1º) boot.</th></tr>{rows}</table>
+<p class="c">*Estação: apenas 171 de 640 cápsulas auditadas (26,7%; demais marcas 73–78%; χ² p&lt;10⁻¹³⁰). Auditados: n=468–498 nas outras marcas. IC95% (±): CO₂e 0,5; água 0,1; reciclagem 3,5 pp; trab. infantil 2–3 pp (Estação 6).</p>
+<img src="fig.png"><p class="c">A: ● base, ■ pesos iguais, ▲ ambiental, ◆ social (maior = melhor). C: cinza = coletada, azul = reciclada.</p>
+<h2>Evidências principais</h2>
+<ul>
+<li><b>Clima:</b> Bravura 25,8 g CO₂e/g café (IC95% 25,4–26,3) vs. Aurora 32,8 (32,2–33,3): Aurora emite +6,9 g/g (IC 6,2–7,6; Welch, Holm p&lt;10⁻⁷⁰); por cápsula, 179 vs. 145 g. Delta é a pior (37,2; +11,4 vs. Bravura). Fim de vida ≈35 g em todas as marcas e destinos: <u>os dados não mostram ganho de CO₂e ao reciclar</u>.</li>
+<li><b>Social:</b> trabalho infantil entre auditados: Aurora 8,6% (IC 6,5–11,4; 43/498) vs. Cerrado 15,1% (−6,5 pp, IC −10,6 a −2,5; Holm p=0,010), Horizonte 13,9% (p=0,044) e Estação 21,1% (p&lt;10⁻⁴); vs. Delta 6,2%, Flora 11,0% e Bravura 12,0% <b>não há diferença detectável</b> (Holm p≥0,26). Delta tem a maior não conformidade (31,5%; Aurora 23,3%, −8,2 pp, IC −13,7 a −2,6; p=0,029) apesar de 75% auditada: auditar ≠ aprovar. Remuneração: 98,6% das cápsulas abaixo da referência em todas as marcas (médias 0,65–0,69): nenhuma marca remunera adequadamente e as diferenças (≤0,04) pouco discriminam.</li>
+<li><b>Estação:</b> sem auditoria não se sabe; limites para trabalho infantil por cápsula: 5,6% a 79% (todos os não auditados regulares ou irregulares). Pior efluentes (0,252/g) e maior desmatamento (0,290 m²/g).</li>
+<li><b>Alegações vs. dados:</b> Aurora “100% reciclável”: 29,4% efetivamente reciclada (26,0–33,0), −13,3 pp vs. Bravura (42,7%; Holm p=5·10⁻⁶). Horizonte: 63,4% coletada, 31,4% reciclada (metade). Granito “emissão nula”: emissão física 194,8 g/cápsula (192,8–196,8), 2ª maior (+49,7 g vs. Bravura). Flora “vegetal”: 28,5 g/g, acima do plástico da Bravura (25,8). Bravura “leve” é verdade (4,98 g), mas efluentes 0,228/g (Aurora 0,143).</li></ul>
+<h2>Limitações</h2>
+<p>Dados sintéticos; independência por hipótese; só comparação entre as 8 marcas (nada sobre outros preparos). Indicadores sociais valem só para auditadas (dados ausentes aleatórios: não verificável). Pesos são juízo de valor: Aurora não é unânime (P(1º)=64% no bootstrap-base; no sorteio de pesos Delta é 1ª em 39%, mas com o pior CO₂e e a maior não conformidade). Aurora, Bravura, Flora e Delta são próximas no social; a escolha depende da prioridade. Sem causalidade.</p>
+</body></html>"""
+open('index.html','w').write(html)
